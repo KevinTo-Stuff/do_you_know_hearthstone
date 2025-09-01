@@ -1,5 +1,3 @@
-// https://github.com/stevenosse/flutter_kit/tree/master
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';

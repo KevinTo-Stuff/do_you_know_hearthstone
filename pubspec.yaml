@@ -1,5 +1,5 @@
 name: do_you_know_hearthstone
-description: "A Hearthstone guessing game."
+description: "A Flutter-based Heartstone knowledge game. Created using BLoC boilerplate provied by https://github.com/stevenosse/flutter_kit/tree/master"
 
 publish_to: "none"
 
