@@ -1,8 +1,11 @@
+import 'package:do_you_know_hearthstone/src/shared/components/form/input.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:do_you_know_hearthstone/src/core/theme/dimens.dart';
 import 'package:do_you_know_hearthstone/src/features/start/logic/start_controller.dart';
 import 'package:do_you_know_hearthstone/src/shared/components/buttons/button.dart';
+import 'package:do_you_know_hearthstone/src/shared/extensions/context_extensions.dart';
 
 @RoutePage()
 class StartScreen extends StatefulWidget implements AutoRouteWrapper {
@@ -33,47 +36,47 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Do You Know Hearthstone?'),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Enter your name to start',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 24),
-              TextFormField(
-                controller: _nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
-                ),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Please enter your name';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                child: Button.primary(
-                  title: 'Start',
-                  onPressed: () => {
-                    // TODO: Navigate to the next page or start the quiz
-                  },
+      appBar: AppBar(toolbarHeight: 0),
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.all(Dimens.spacing),
+          children: [
+            const SizedBox(height: Dimens.tripleSpacing),
+            Text(
+              'Do you know Hearthstone?',
+              style: context.textTheme.titleLarge,
+            ),
+            const SizedBox(height: Dimens.minSpacing),
+            Text(
+              'Enter your name to start',
+              style: context.textTheme.bodyMedium,
+            ),
+            const SizedBox(height: Dimens.doubleSpacing),
+            AutofillGroup(
+              key: _formKey,
+              child: Form(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Input(
+                      autofillHints: const [AutofillHints.email],
+                      controller: _nameController,
+                      labelText: 'Name',
+                      textInputAction: TextInputAction.next,
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+            const SizedBox(height: Dimens.spacing),
+            Button.outline(
+              title: '',
+              onPressed: () => {},
+              icon: Icon(IconData(0xf04f1, fontFamily: 'MaterialIcons')),
+            ),
+            const SizedBox(height: Dimens.spacing),
+            Button.primary(title: 'Start', onPressed: () => {}),
+          ],
         ),
       ),
     );
