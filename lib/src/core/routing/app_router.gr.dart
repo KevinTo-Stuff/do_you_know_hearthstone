@@ -11,17 +11,17 @@
 part of 'app_router.dart';
 
 /// generated route for
-/// [StartView]
-class StartView extends PageRouteInfo<void> {
-  const StartView({List<PageRouteInfo>? children})
-    : super(StartView.name, initialChildren: children);
+/// [StartScreen]
+class StartRoute extends PageRouteInfo<void> {
+  const StartRoute({List<PageRouteInfo>? children})
+    : super(StartRoute.name, initialChildren: children);
 
-  static const String name = 'StartView';
+  static const String name = 'StartRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return WrappedRoute(child: const StartView());
+      return WrappedRoute(child: const StartScreen());
     },
   );
 }

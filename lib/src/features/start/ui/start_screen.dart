@@ -1,14 +1,15 @@
-import 'package:do_you_know_hearthstone/src/features/start/logic/start_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:do_you_know_hearthstone/src/features/start/logic/start_controller.dart';
+import 'package:do_you_know_hearthstone/src/shared/components/buttons/button.dart';
 
 @RoutePage()
-class StartView extends StatefulWidget implements AutoRouteWrapper {
-  const StartView({super.key});
+class StartScreen extends StatefulWidget implements AutoRouteWrapper {
+  const StartScreen({super.key});
 
   @override
-  State<StartView> createState() => _StartViewState();
+  State<StartScreen> createState() => _StartScreenState();
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -19,7 +20,7 @@ class StartView extends StatefulWidget implements AutoRouteWrapper {
   }
 }
 
-class _StartViewState extends State<StartView> {
+class _StartScreenState extends State<StartScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
 
@@ -64,13 +65,11 @@ class _StartViewState extends State<StartView> {
               const SizedBox(height: 24),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState?.validate() ?? false) {
-                      // TODO: Navigate to the next page or start the quiz
-                    }
+                child: Button.primary(
+                  title: 'Start',
+                  onPressed: () => {
+                    // TODO: Navigate to the next page or start the quiz
                   },
-                  child: const Text('Start'),
                 ),
               ),
             ],
