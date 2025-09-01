@@ -1,10 +1,15 @@
-import 'package:do_you_know_hearthstone/src/shared/components/form/input.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+// Package imports:
 import 'package:auto_route/auto_route.dart';
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:do_you_know_hearthstone/src/core/theme/dimens.dart';
 import 'package:do_you_know_hearthstone/src/features/start/logic/start_controller.dart';
 import 'package:do_you_know_hearthstone/src/shared/components/buttons/button.dart';
+import 'package:do_you_know_hearthstone/src/shared/components/form/input.dart';
 import 'package:do_you_know_hearthstone/src/shared/extensions/context_extensions.dart';
 
 @RoutePage()

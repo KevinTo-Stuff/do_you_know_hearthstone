@@ -2,8 +2,9 @@ include: package:flutter_lints/flutter.yaml
 
 linter:
   rules:
+    sort_pub_dependencies: true
     avoid_print: false
-    prefer_single_quotes: true 
+    prefer_single_quotes: true
     prefer_const_constructors_in_immutables: false
     prefer_const_constructors: false
     prefer_const_literals_to_create_immutables: false
@@ -15,8 +16,19 @@ linter:
     avoid_annotating_with_dynamic: true
     strict_top_level_inference: false
 
-analyzer: 
+analyzer:
   exclude: ["**.freezed.dart", "**.g.dart"]
+  plugins:
+    - import_sorter
 
-  errors: 
+  errors:
     invalid_annotation_target: ignore
+
+import_sorter:
+  comments: false
+  custom_group_order:
+    - dart
+    - package
+    - other
+    - user
+  user_pattern: "^package:do_you_know_hearthstone/"

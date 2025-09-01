@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:do_you_know_hearthstone/src/core/theme/dimens.dart';
 import 'package:do_you_know_hearthstone/src/shared/extensions/context_extensions.dart';
 

@@ -1,7 +1,11 @@
+// Dart imports:
 import 'dart:convert';
 
-import 'package:do_you_know_hearthstone/src/shared/services/storage/storage.dart';
+// Package imports:
 import 'package:shared_preferences/shared_preferences.dart';
+
+// Project imports:
+import 'package:do_you_know_hearthstone/src/shared/services/storage/storage.dart';
 
 class LocalStorage extends Storage {
   late SharedPreferences _sharedPreferences;

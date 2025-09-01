@@ -1,9 +1,14 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:auto_route/auto_route.dart';
-import 'package:do_you_know_hearthstone/src/core/routing/app_router.dart';
-import 'package:do_you_know_hearthstone/src/shared/locator.dart';
+
+// Project imports:
 import 'package:do_you_know_hearthstone/src/core/environment.dart';
+import 'package:do_you_know_hearthstone/src/core/routing/app_router.dart';
 import 'package:do_you_know_hearthstone/src/core/theme/app_theme.dart';
+import 'package:do_you_know_hearthstone/src/shared/locator.dart';
 
 class Application extends StatelessWidget {
   final AppRouter _appRouter;
