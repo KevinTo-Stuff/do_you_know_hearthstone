@@ -1,6 +1,6 @@
 // Flutter imports:
+import 'package:do_you_know_hearthstone/src/core/routing/app_router.dart';
 import 'package:do_you_know_hearthstone/src/features/start/logic/start_cubit.dart';
-import 'package:do_you_know_hearthstone/src/shared/components/dialogs/settings.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -74,12 +74,8 @@ class _StartScreenState extends State<StartScreen> {
             const SizedBox(height: Dimens.spacing),
             Button.outline(
               title: '',
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const SettingsDialog(),
-                );
-              },
+              onPressed: () =>
+                  AutoRouter.of(context).push(const SettingsRoute()),
               icon: Icon(IconData(0xf04f1, fontFamily: 'MaterialIcons')),
             ),
             const SizedBox(height: Dimens.spacing),
