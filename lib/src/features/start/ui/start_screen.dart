@@ -1,13 +1,14 @@
 // Flutter imports:
+import 'package:do_you_know_hearthstone/src/features/start/logic/start_cubit.dart';
+import 'package:do_you_know_hearthstone/src/shared/components/dialogs/settings.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:auto_route/auto_route.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
 import 'package:do_you_know_hearthstone/src/core/theme/dimens.dart';
-import 'package:do_you_know_hearthstone/src/features/start/logic/start_controller.dart';
 import 'package:do_you_know_hearthstone/src/shared/components/buttons/button.dart';
 import 'package:do_you_know_hearthstone/src/shared/components/form/input.dart';
 import 'package:do_you_know_hearthstone/src/shared/extensions/context_extensions.dart';
@@ -21,10 +22,7 @@ class StartScreen extends StatefulWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => StartController(),
-      child: this,
-    );
+    return BlocProvider(create: (_) => StartCubit(), child: this);
   }
 }
 
@@ -76,7 +74,12 @@ class _StartScreenState extends State<StartScreen> {
             const SizedBox(height: Dimens.spacing),
             Button.outline(
               title: '',
-              onPressed: () => {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => const SettingsDialog(),
+                );
+              },
               icon: Icon(IconData(0xf04f1, fontFamily: 'MaterialIcons')),
             ),
             const SizedBox(height: Dimens.spacing),
