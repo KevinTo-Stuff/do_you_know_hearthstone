@@ -2,8 +2,9 @@
 import 'package:auto_route/auto_route.dart';
 
 // Project imports:
-import 'package:do_you_know_hearthstone/src/features/start/ui/start_screen.dart';
+import 'package:do_you_know_hearthstone/src/features/game/ui/game_screen.dart';
 import 'package:do_you_know_hearthstone/src/features/settings/ui/settings_screen.dart';
+import 'package:do_you_know_hearthstone/src/features/start/ui/start_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -13,5 +14,6 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> routes = [
     AutoRoute(page: StartRoute.page, initial: true),
     AutoRoute(page: SettingsRoute.page),
+    AutoRoute(page: GameRoute.page),
   ];
 }

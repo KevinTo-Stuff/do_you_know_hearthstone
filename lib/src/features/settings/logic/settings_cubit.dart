@@ -1,10 +1,27 @@
-import 'package:do_you_know_hearthstone/src/features/start/logic/settings.dart';
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit() : super(_SettingsInitial(settings: Settings()));
+  SettingsCubit()
+    : super(
+        _SettingsInitial(
+          darkMode: false,
+          mute: false,
+          difficulty: 'Normal',
+          timer: 0,
+        ),
+      );
 
-  void toggleDarkMode() {}
+  void setDarkMode(bool darkMode) {
+    emit(
+      _SettingsInitial(
+        darkMode: darkMode,
+        mute: false,
+        difficulty: 'Normal',
+        timer: 0,
+      ),
+    );
+  }
 }
