@@ -19,6 +19,20 @@ sealed class SettingsState {
     required String difficulty,
     required int timer,
   }) = _SettingsInitial;
+
+  SettingsState copyWith({
+    bool? darkMode,
+    bool? mute,
+    String? difficulty,
+    int? timer,
+  }) {
+    return SettingsState.initial(
+      darkMode: darkMode ?? this.darkMode,
+      mute: mute ?? this.mute,
+      difficulty: difficulty ?? this.difficulty,
+      timer: timer ?? this.timer,
+    );
+  }
 }
 
 final class _SettingsInitial extends SettingsState {

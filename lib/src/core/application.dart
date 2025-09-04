@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:do_you_know_hearthstone/src/features/settings/logic/settings_cubit.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -9,6 +10,7 @@ import 'package:do_you_know_hearthstone/src/core/environment.dart';
 import 'package:do_you_know_hearthstone/src/core/routing/app_router.dart';
 import 'package:do_you_know_hearthstone/src/core/theme/app_theme.dart';
 import 'package:do_you_know_hearthstone/src/shared/locator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Application extends StatelessWidget {
   final AppRouter _appRouter;
@@ -18,14 +20,17 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: Environment.appName,
-      routerConfig: _appRouter.config(
-        navigatorObservers: () => [AutoRouteObserver()],
+    return BlocProvider(
+      create: (BuildContext contexxt) => SettingsCubit(),
+      child: MaterialApp.router(
+        title: Environment.appName,
+        routerConfig: _appRouter.config(
+          navigatorObservers: () => [AutoRouteObserver()],
+        ),
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        debugShowCheckedModeBanner: false,
       ),
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      debugShowCheckedModeBanner: false,
     );
   }
 }

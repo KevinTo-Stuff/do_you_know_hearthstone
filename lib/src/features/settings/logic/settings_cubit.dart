@@ -15,12 +15,25 @@ class SettingsCubit extends Cubit<SettingsState> {
       );
 
   void setDarkMode(bool darkMode) {
+    final updatedState = state.copyWith(darkMode: darkMode);
     emit(
       _SettingsInitial(
-        darkMode: darkMode,
-        mute: false,
-        difficulty: 'Normal',
-        timer: 0,
+        darkMode: updatedState.darkMode,
+        mute: updatedState.mute,
+        difficulty: updatedState.difficulty,
+        timer: updatedState.timer,
+      ),
+    );
+  }
+
+  void setMute(bool mute) {
+    final updatedState = state.copyWith(mute: mute);
+    emit(
+      _SettingsInitial(
+        darkMode: updatedState.darkMode,
+        mute: updatedState.mute,
+        difficulty: updatedState.difficulty,
+        timer: updatedState.timer,
       ),
     );
   }

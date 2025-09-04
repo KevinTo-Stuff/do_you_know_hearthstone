@@ -31,21 +31,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
         body: ListView(
           children: [
             BlocBuilder<SettingsCubit, SettingsState>(
-              builder: (context, state) => ListTile(
-                leading: const Icon(Icons.dark_mode),
-                title: const Text('Dark Mode'),
-                trailing: Switch(
-                  value: state.darkMode,
-                  onChanged: (value) {
-                    context.read<SettingsCubit>().setDarkMode(value);
-                  },
-                ),
+              builder: (context, state) => ListView(
+                children: [
+                  ListTile(
+                    leading: const Icon(Icons.dark_mode),
+                    title: const Text('Dark Mode'),
+                    trailing: Switch(
+                      value: state.darkMode,
+                      onChanged: (value) {
+                        context.read<SettingsCubit>().setDarkMode(value);
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.music_note),
+                    title: const Text('Sound'),
+                    trailing: Switch(
+                      value: state.mute,
+                      onChanged: (value) {
+                        context.read<SettingsCubit>().setMute(value);
+                      },
+                    ),
+                  ),
+                ],
               ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.notifications),
-              title: const Text('Sound'),
-              trailing: Switch(value: true, onChanged: (value) {}),
             ),
             ListTile(
               leading: const Icon(Icons.info),
