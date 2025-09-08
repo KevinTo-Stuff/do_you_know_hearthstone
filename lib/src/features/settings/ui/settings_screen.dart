@@ -43,7 +43,6 @@ class SettingsScreen extends StatelessWidget {
               title: const Text('About'),
               onTap: () {},
             ),
-            const Divider(),
             // ListTile(
             //   leading: const Icon(Icons.warning),
             //   title: const Text('Difficulty'),

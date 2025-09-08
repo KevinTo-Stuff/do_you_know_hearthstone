@@ -22,14 +22,16 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => SettingsCubit(),
-      child: MaterialApp.router(
-        title: Environment.appName,
-        routerConfig: _appRouter.config(
-          navigatorObservers: () => [AutoRouteObserver()],
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, state) => MaterialApp.router(
+          title: Environment.appName,
+          routerConfig: _appRouter.config(
+            navigatorObservers: () => [AutoRouteObserver()],
+          ),
+          theme: state.darkMode ? AppTheme.darkTheme : AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          debugShowCheckedModeBanner: false,
         ),
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        debugShowCheckedModeBanner: false,
       ),
     );
   }
