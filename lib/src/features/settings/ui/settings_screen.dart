@@ -1,8 +1,12 @@
 // Flutter imports:
-import 'package:auto_route/auto_route.dart';
-import 'package:do_you_know_hearthstone/src/core/settings/settings_cubit.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+// Project imports:
+import 'package:do_you_know_hearthstone/src/core/logic/settings/settings_cubit.dart';
 
 @RoutePage()
 class SettingsScreen extends StatelessWidget {

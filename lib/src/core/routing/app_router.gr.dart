@@ -53,7 +53,7 @@ class StartRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return WrappedRoute(child: const StartScreen());
+      return StartScreen();
     },
   );
 }
