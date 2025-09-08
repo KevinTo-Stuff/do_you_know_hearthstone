@@ -1,5 +1,5 @@
 // Flutter imports:
-import 'package:do_you_know_hearthstone/src/features/settings/logic/settings_cubit.dart';
+import 'package:do_you_know_hearthstone/src/core/settings/settings_cubit.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -21,7 +21,7 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext contexxt) => SettingsCubit(),
+      create: (BuildContext context) => SettingsCubit(),
       child: MaterialApp.router(
         title: Environment.appName,
         routerConfig: _appRouter.config(

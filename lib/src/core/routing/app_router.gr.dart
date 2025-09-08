@@ -37,7 +37,7 @@ class SettingsRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return WrappedRoute(child: const SettingsScreen());
+      return SettingsScreen();
     },
   );
 }
