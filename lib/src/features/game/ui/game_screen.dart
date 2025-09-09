@@ -51,6 +51,28 @@ class _GameScreenState extends State<GameScreen> {
           children: [
             Button.primary(title: 'Generate Card', onPressed: () => {}),
             const SizedBox(height: Dimens.spacing),
+            BlocBuilder<GameCubit, GameState>(
+              builder: (context, state) => Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(Dimens.spacing),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        state.card.name,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        state.card.flavor,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      // Add more fields as needed
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
