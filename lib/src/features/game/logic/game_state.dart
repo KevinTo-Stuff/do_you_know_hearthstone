@@ -6,6 +6,13 @@ sealed class GameState {
 
   const GameState({required this.score, required this.card});
 
+  GameState copyWith({int? score, HearthstoneCard? card}) {
+    return GameState.initial(
+      score: score ?? this.score,
+      card: card ?? this.card,
+    );
+  }
+
   factory GameState.initial({
     required int score,
     required HearthstoneCard card,

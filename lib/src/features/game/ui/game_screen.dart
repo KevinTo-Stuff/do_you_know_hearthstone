@@ -49,7 +49,10 @@ class _GameScreenState extends State<GameScreen> {
         body: ListView(
           padding: const EdgeInsets.all(Dimens.spacing),
           children: [
-            Button.primary(title: 'Generate Card', onPressed: () => {}),
+            Button.primary(
+              title: 'Generate Card',
+              onPressed: () => {context.read<GameCubit>().generateCard()},
+            ),
             const SizedBox(height: Dimens.spacing),
             BlocBuilder<GameCubit, GameState>(
               builder: (context, state) => Card(
