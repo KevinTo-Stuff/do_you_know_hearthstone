@@ -7,7 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
 import 'package:do_you_know_hearthstone/src/core/logic/player/player_cubit.dart';
+import 'package:do_you_know_hearthstone/src/core/theme/dimens.dart';
 import 'package:do_you_know_hearthstone/src/features/game/logic/game_cubit.dart';
+import 'package:do_you_know_hearthstone/src/shared/components/buttons/button.dart';
 
 @RoutePage()
 class GameScreen extends StatefulWidget implements AutoRouteWrapper {
@@ -44,11 +46,12 @@ class _GameScreenState extends State<GameScreen> {
             ],
           ),
         ),
-        body: Center(
-          child: Text(
-            'Welcome to Hearthstone!',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
+        body: ListView(
+          padding: const EdgeInsets.all(Dimens.spacing),
+          children: [
+            Button.primary(title: 'Generate Card', onPressed: () => {}),
+            const SizedBox(height: Dimens.spacing),
+          ],
         ),
       ),
     );
