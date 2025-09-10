@@ -10,6 +10,7 @@ import 'package:do_you_know_hearthstone/src/core/logic/player/player_cubit.dart'
 import 'package:do_you_know_hearthstone/src/core/theme/dimens.dart';
 import 'package:do_you_know_hearthstone/src/features/game/logic/game_cubit.dart';
 import 'package:do_you_know_hearthstone/src/shared/components/buttons/button.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 @RoutePage()
 class GameScreen extends StatefulWidget implements AutoRouteWrapper {
@@ -65,12 +66,12 @@ class _GameScreenState extends State<GameScreen> {
                         state.card.name,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
-                      const SizedBox(height: 8),
                       Text(
-                        state.card.flavor,
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        state.card.flavor ?? '',
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
-                      // Add more fields as needed
+                      const SizedBox(height: 8),
+                      Html(data: state.card.text ?? ''),
                     ],
                   ),
                 ),
