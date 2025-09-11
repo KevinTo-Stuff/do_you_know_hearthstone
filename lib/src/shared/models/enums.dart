@@ -141,3 +141,15 @@ enum Tribe {
   naga,
   invalid,
 }
+
+enum SpellSchool {
+  none,
+  arcane,
+  fire,
+  frost,
+  nature,
+  holy,
+  shadow,
+  fel,
+  invalid,
+}

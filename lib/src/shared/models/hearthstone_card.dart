@@ -23,6 +23,7 @@ class HearthstoneCard {
   final Set? set;
   final CardType? type;
   final Tribe? race;
+  final SpellSchool? spellSchool;
 
   HearthstoneCard({
     required this.id,
@@ -46,6 +47,7 @@ class HearthstoneCard {
     this.set,
     this.type,
     this.race,
+    this.spellSchool,
   });
 
   factory HearthstoneCard.blank() {
@@ -106,6 +108,9 @@ class HearthstoneCard {
       set: json['set'] != null ? _stringToSet(json['set']) : null,
       type: json['type'] != null ? _stringToCardType(json['type']) : null,
       race: json['race'] != null ? _stringToRace(json['race']) : null,
+      spellSchool: json['spellSchool'] != null
+          ? _stringToSpellSchool(json['spellSchool'])
+          : null,
     );
   }
 
@@ -128,6 +133,8 @@ class HearthstoneCard {
       'rarity': rarity,
       'set': set,
       'type': type,
+      'race': Tribe,
+      'spellSchool': SpellSchool,
     };
   }
 
@@ -174,6 +181,16 @@ class HearthstoneCard {
   static Tribe? _stringToRace(String race) {
     final normalized = race.toLowerCase();
     for (final s in Tribe.values) {
+      if (s.name.toLowerCase() == normalized) {
+        return s;
+      }
+    }
+    return null;
+  }
+
+  static SpellSchool? _stringToSpellSchool(String spellSchool) {
+    final normalized = spellSchool.toLowerCase();
+    for (final s in SpellSchool.values) {
       if (s.name.toLowerCase() == normalized) {
         return s;
       }

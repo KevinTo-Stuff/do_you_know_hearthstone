@@ -109,7 +109,7 @@ class HearthstoneCardDisplay extends StatelessWidget {
               ],
             ),
 
-            if (card.race != null || card.type != null)
+            if (card.race != null || card.type != null || card.spellSchool != null)
               Align(
                 alignment: Alignment.center,
                 child: Wrap(
@@ -147,6 +147,21 @@ class HearthstoneCardDisplay extends StatelessWidget {
                         visualDensity: VisualDensity.compact,
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
+                    if (card.spellSchool != null && card.spellSchool != SpellSchool.none && card.spellSchool != SpellSchool.invalid)
+                      Chip(
+                        label: Text(
+                          card.spellSchool
+                                  .toString()
+                                  .split('.')
+                                  .last[0]
+                                  .toUpperCase() +
+                              card.spellSchool.toString().split('.').last.substring(1),
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                        backgroundColor: HearthstoneCardDisplay._spellSchoolColor(card.spellSchool),
+                        visualDensity: VisualDensity.compact,
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
                   ],
                 ),
               ),
@@ -165,6 +180,29 @@ class HearthstoneCardDisplay extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // Hearthstone spell school color mapping
+  static Color _spellSchoolColor(SpellSchool? school) {
+    if (school == null) return Colors.grey[200]!;
+    switch (school) {
+      case SpellSchool.arcane:
+        return Colors.purple[300]!;
+      case SpellSchool.fire:
+        return Colors.red[400]!;
+      case SpellSchool.frost:
+        return Colors.blue[200]!;
+      case SpellSchool.nature:
+        return Colors.green[400]!;
+      case SpellSchool.holy:
+        return Colors.yellow[300]!;
+      case SpellSchool.shadow:
+        return Colors.deepPurple[900]!;
+      case SpellSchool.fel:
+        return Colors.green[900]!;
+      default:
+        return Colors.grey[200]!;
+    }
   }
 
   // Hearthstone rarity color mapping
