@@ -100,6 +100,7 @@ enum Set {
   pe2,
   temp1,
   reward,
+  theBoomsdayProject,
 }
 
 enum CardType {
@@ -125,4 +126,18 @@ enum CardType {
   battlegroundAnomaly,
   battlegroundTrinket,
   pet,
+}
+
+enum Tribe {
+  murloc,
+  demon,
+  mech,
+  elemental,
+  beast,
+  totem,
+  dragon,
+  pirate,
+  undead,
+  naga,
+  invalid,
 }

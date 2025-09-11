@@ -22,6 +22,7 @@ class HearthstoneCard {
   final Rarity? rarity;
   final Set? set;
   final CardType? type;
+  final Tribe? race;
 
   HearthstoneCard({
     required this.id,
@@ -44,6 +45,7 @@ class HearthstoneCard {
     this.rarity,
     this.set,
     this.type,
+    this.race,
   });
 
   factory HearthstoneCard.blank() {
@@ -103,6 +105,7 @@ class HearthstoneCard {
       rarity: json['rarity'] != null ? _stringToRarity(json['rarity']) : null,
       set: json['set'] != null ? _stringToSet(json['set']) : null,
       type: json['type'] != null ? _stringToCardType(json['type']) : null,
+      race: json['race'] != null ? _stringToRace(json['race']) : null,
     );
   }
 
@@ -128,20 +131,54 @@ class HearthstoneCard {
     };
   }
 
-  static CardClass _stringtoCardClass(String cardClass) {
-    return CardClass.invalid;
+  static CardClass? _stringtoCardClass(String cardClass) {
+    final normalized = cardClass.toLowerCase();
+    for (final s in CardClass.values) {
+      if (s.name.toLowerCase() == normalized) {
+        return s;
+      }
+    }
+    return null;
   }
 
-  static Set _stringToSet(String set) {
-    return Set.invalid;
+  static Set? _stringToSet(String set) {
+    final normalized = set.toLowerCase();
+    for (final s in Set.values) {
+      if (s.name.toLowerCase() == normalized) {
+        return s;
+      }
+    }
+    return null;
   }
 
-  static CardType _stringToCardType(String cardType) {
-    return CardType.invalid;
+  static CardType? _stringToCardType(String cardType) {
+    final normalized = cardType.toLowerCase();
+    for (final s in CardType.values) {
+      if (s.name.toLowerCase() == normalized) {
+        return s;
+      }
+    }
+    return null;
   }
 
-  static Rarity _stringToRarity(String rarity) {
-    return Rarity.invalid;
+  static Rarity? _stringToRarity(String rarity) {
+    final normalized = rarity.toLowerCase();
+    for (final s in Rarity.values) {
+      if (s.name.toLowerCase() == normalized) {
+        return s;
+      }
+    }
+    return null;
+  }
+
+  static Tribe? _stringToRace(String race) {
+    final normalized = race.toLowerCase();
+    for (final s in Tribe.values) {
+      if (s.name.toLowerCase() == normalized) {
+        return s;
+      }
+    }
+    return null;
   }
 
   static Faction _stringToFaction(String faction) {

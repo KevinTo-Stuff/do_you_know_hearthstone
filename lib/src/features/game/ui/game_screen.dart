@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:do_you_know_hearthstone/src/shared/components/card/hearthstone_card_display.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -10,7 +11,6 @@ import 'package:do_you_know_hearthstone/src/core/logic/player/player_cubit.dart'
 import 'package:do_you_know_hearthstone/src/core/theme/dimens.dart';
 import 'package:do_you_know_hearthstone/src/features/game/logic/game_cubit.dart';
 import 'package:do_you_know_hearthstone/src/shared/components/buttons/button.dart';
-import 'package:flutter_html/flutter_html.dart';
 
 @RoutePage()
 class GameScreen extends StatefulWidget implements AutoRouteWrapper {
@@ -56,26 +56,8 @@ class _GameScreenState extends State<GameScreen> {
             ),
             const SizedBox(height: Dimens.spacing),
             BlocBuilder<GameCubit, GameState>(
-              builder: (context, state) => Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(Dimens.spacing),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        state.card.name,
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      Text(
-                        state.card.flavor ?? '',
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                      const SizedBox(height: 8),
-                      Html(data: state.card.text ?? ''),
-                    ],
-                  ),
-                ),
-              ),
+              builder: (context, state) =>
+                  HearthstoneCardDisplay(card: state.card),
             ),
           ],
         ),
