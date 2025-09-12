@@ -37,8 +37,8 @@ class StartScreen extends StatelessWidget {
             ),
             const SizedBox(height: Dimens.doubleSpacing),
             AutofillGroup(
-              key: _formKey,
               child: Form(
+                key: _formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -48,6 +48,12 @@ class StartScreen extends StatelessWidget {
                       textInputAction: TextInputAction.next,
                       onChanged: (value) =>
                           context.read<PlayerCubit>().setName(value),
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      },
                     ),
                   ],
                 ),
@@ -63,7 +69,11 @@ class StartScreen extends StatelessWidget {
             const SizedBox(height: Dimens.spacing),
             Button.primary(
               title: 'Start',
-              onPressed: () => {AutoRouter.of(context).push(const GameRoute())},
+              onPressed: () {
+                if (_formKey.currentState?.validate() ?? false) {
+                  AutoRouter.of(context).push(const GameRoute());
+                }
+              },
             ),
           ],
         ),

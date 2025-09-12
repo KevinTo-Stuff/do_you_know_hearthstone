@@ -87,29 +87,9 @@ class HearthstoneCardDisplay extends StatelessWidget {
             const SizedBox(height: 12),
             if (card.text != null) Html(data: card.text!),
             const SizedBox(height: 8),
-            Row(
-              children: [
-                if (card.attack != null)
-                  _StatIcon(
-                    icon: Icons.flash_on,
-                    value: card.attack.toString(),
-                  ),
-                if (card.health != null)
-                  _StatIcon(
-                    icon: Icons.favorite,
-                    value: card.health.toString(),
-                  ),
-                if (card.armor != null)
-                  _StatIcon(icon: Icons.shield, value: card.armor.toString()),
-                if (card.durability != null)
-                  _StatIcon(
-                    icon: Icons.build,
-                    value: card.durability.toString(),
-                  ),
-              ],
-            ),
-
-            if (card.race != null || card.type != null || card.spellSchool != null)
+            if (card.race != null ||
+                card.type != null ||
+                card.spellSchool != null)
               Align(
                 alignment: Alignment.center,
                 child: Wrap(
@@ -147,7 +127,9 @@ class HearthstoneCardDisplay extends StatelessWidget {
                         visualDensity: VisualDensity.compact,
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
-                    if (card.spellSchool != null && card.spellSchool != SpellSchool.none && card.spellSchool != SpellSchool.invalid)
+                    if (card.spellSchool != null &&
+                        card.spellSchool != SpellSchool.none &&
+                        card.spellSchool != SpellSchool.invalid)
                       Chip(
                         label: Text(
                           card.spellSchool
@@ -155,10 +137,17 @@ class HearthstoneCardDisplay extends StatelessWidget {
                                   .split('.')
                                   .last[0]
                                   .toUpperCase() +
-                              card.spellSchool.toString().split('.').last.substring(1),
+                              card.spellSchool
+                                  .toString()
+                                  .split('.')
+                                  .last
+                                  .substring(1),
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
-                        backgroundColor: HearthstoneCardDisplay._spellSchoolColor(card.spellSchool),
+                        backgroundColor:
+                            HearthstoneCardDisplay._spellSchoolColor(
+                              card.spellSchool,
+                            ),
                         visualDensity: VisualDensity.compact,
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
@@ -176,6 +165,45 @@ class HearthstoneCardDisplay extends StatelessWidget {
                   ),
                 ),
               ),
+            Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 32.0),
+                  child: Row(
+                    children: [
+                      // if (card.armor != null)
+                      //   _StatIcon(
+                      //     icon: Icons.shield,
+                      //     value: card.armor.toString(),
+                      //   ),
+                      // if (card.durability != null)
+                      //   _StatIcon(
+                      //     icon: Icons.build,
+                      //     value: card.durability.toString(),
+                      //   ),
+                    ],
+                  ),
+                ),
+                if (card.attack != null)
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: _StatIcon(
+                      icon: Icons.flash_on,
+                      value: card.attack.toString(),
+                    ),
+                  ),
+                if (card.health != null)
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    child: _StatIcon(
+                      icon: Icons.favorite,
+                      value: card.health.toString(),
+                    ),
+                  ),
+              ],
+            ),
           ],
         ),
       ),

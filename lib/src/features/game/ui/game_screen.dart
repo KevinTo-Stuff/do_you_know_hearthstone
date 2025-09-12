@@ -47,19 +47,34 @@ class _GameScreenState extends State<GameScreen> {
             ],
           ),
         ),
-        body: ListView(
+        body: Padding(
           padding: const EdgeInsets.all(Dimens.spacing),
-          children: [
-            Button.primary(
-              title: 'Generate Card',
-              onPressed: () => {context.read<GameCubit>().generateCard()},
-            ),
-            const SizedBox(height: Dimens.spacing),
-            BlocBuilder<GameCubit, GameState>(
-              builder: (context, state) =>
-                  HearthstoneCardDisplay(card: state.card),
-            ),
-          ],
+          child: Column(
+            children: [
+              Expanded(
+                child: BlocBuilder<GameCubit, GameState>(
+                  builder: (context, state) {
+                    final isLoading =
+                        state.card.id.isEmpty || state.card.name.isEmpty;
+                    if (isLoading) {
+                      return Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(32.0),
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+                    }
+                    return HearthstoneCardDisplay(card: state.card);
+                  },
+                ),
+              ),
+              const SizedBox(height: Dimens.spacing),
+              Button.primary(
+                title: 'Generate Card',
+                onPressed: () => {context.read<GameCubit>().generateCard()},
+              ),
+            ],
+          ),
         ),
       ),
     );
