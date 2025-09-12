@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 // Flutter imports:
+import 'package:do_you_know_hearthstone/src/shared/models/enums.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 // Project imports:
@@ -20,7 +21,11 @@ class CardGenerator {
     final List<HearthstoneCard> processedCards = jsonList
         .map((json) => HearthstoneCard.fromJson(json as Map<String, dynamic>))
         .toList();
-    processedCards.removeWhere((card) => card.collectible != true);
+    processedCards.removeWhere(
+      (card) =>
+          card.type == CardType.hero &&
+          (card.text == null || card.text!.trim().isEmpty),
+    );
     cards = processedCards;
   }
 

@@ -1,7 +1,9 @@
+import 'package:do_you_know_hearthstone/src/core/theme/dimens.dart';
 import 'package:flutter/material.dart';
 import 'package:do_you_know_hearthstone/src/shared/models/hearthstone_card.dart';
 import 'package:do_you_know_hearthstone/src/shared/models/enums.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HearthstoneCardDisplay extends StatelessWidget {
   final HearthstoneCard card;
@@ -154,17 +156,7 @@ class HearthstoneCardDisplay extends StatelessWidget {
                   ],
                 ),
               ),
-            if (card.flavor != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Text(
-                  '"${card.flavor}"',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    fontStyle: FontStyle.italic,
-                    color: Colors.grey[600],
-                  ),
-                ),
-              ),
+            const SizedBox(height: Dimens.spacing),
             Stack(
               children: [
                 Padding(
@@ -187,23 +179,35 @@ class HearthstoneCardDisplay extends StatelessWidget {
                 if (card.attack != null)
                   Positioned(
                     bottom: 0,
-                    right: 0,
+                    left: 0,
                     child: _StatIcon(
-                      icon: Icons.flash_on,
+                      icon: FontAwesomeIcons.handFist,
                       value: card.attack.toString(),
                     ),
                   ),
                 if (card.health != null)
                   Positioned(
                     bottom: 0,
-                    left: 0,
+                    right: 0,
                     child: _StatIcon(
-                      icon: Icons.favorite,
+                      icon: FontAwesomeIcons.heart,
                       value: card.health.toString(),
                     ),
                   ),
               ],
             ),
+            const SizedBox(height: Dimens.tripleSpacing),
+            if (card.flavor != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  '"${card.flavor}"',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    fontStyle: FontStyle.italic,
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ),
           ],
         ),
       ),

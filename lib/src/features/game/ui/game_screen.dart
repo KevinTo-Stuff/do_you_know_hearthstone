@@ -33,18 +33,48 @@ class _GameScreenState extends State<GameScreen> {
       child: Scaffold(
         appBar: AppBar(),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              BlocBuilder<PlayerCubit, PlayerState>(
-                builder: (context, state) => Text(
-                  state.name,
-                  style: Theme.of(context).textTheme.titleMedium,
+          padding: const EdgeInsets.all(0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+              borderRadius: BorderRadius.zero,
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                BlocBuilder<PlayerCubit, PlayerState>(
+                  builder: (context, state) => Row(
+                    children: [
+                      Icon(Icons.person, color: Colors.white, size: 14),
+                      const SizedBox(width: 4),
+                      Text(
+                        state.name,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Text('Score: 0', style: Theme.of(context).textTheme.titleMedium),
-            ],
+                Row(
+                  children: [
+                    Icon(Icons.star, color: Colors.white, size: 14),
+                    const SizedBox(width: 4),
+                    Text(
+                      'Score: 0',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
         body: Padding(
