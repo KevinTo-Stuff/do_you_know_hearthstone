@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:do_you_know_hearthstone/src/shared/components/card/hearthstone_card_display.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -11,6 +10,7 @@ import 'package:do_you_know_hearthstone/src/core/logic/player/player_cubit.dart'
 import 'package:do_you_know_hearthstone/src/core/theme/dimens.dart';
 import 'package:do_you_know_hearthstone/src/features/game/logic/game_cubit.dart';
 import 'package:do_you_know_hearthstone/src/shared/components/buttons/button.dart';
+import 'package:do_you_know_hearthstone/src/shared/components/card/hearthstone_card_display.dart';
 
 @RoutePage()
 class GameScreen extends StatefulWidget implements AutoRouteWrapper {
