@@ -139,6 +139,7 @@ enum Tribe {
   pirate,
   undead,
   naga,
+  dranei,
   invalid,
 }
 

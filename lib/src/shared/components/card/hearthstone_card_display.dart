@@ -100,7 +100,8 @@ class HearthstoneCardDisplay extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: Dimens.spacing),
-              if (card.text != null) Html(data: card.text!),
+              if (card.text != null)
+                Html(data: card.text!.replaceAll('[x]', '')),
               const SizedBox(height: Dimens.halfSpacing),
               if (card.race != null ||
                   card.type != null ||
