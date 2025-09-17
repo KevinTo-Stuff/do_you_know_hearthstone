@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:do_you_know_hearthstone/src/features/game/data/hearthstone_card_art_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
@@ -10,17 +11,19 @@ part 'game_state.dart';
 class GameCubit extends Cubit<GameState> {
   final CardGenerator generator = CardGenerator();
 
-  GameCubit() : super(_GameInitial(score: 0, card: HearthstoneCard.blank())) {
+  GameCubit()
+    : super(
+        _GameInitial(score: 0, card: HearthstoneCard.blank(), cardArtUrl: ''),
+      ) {
     _initialize();
   }
 
   Future<void> _initialize() async {
-    final card = await generator.getRandomCard();
-    emit(_GameInitial(score: 0, card: card));
+    generateCard();
   }
 
   Future<void> generateCard() async {
-    final newCard = await generator.getRandomCard();
-    emit(_GameInitial(score: 0, card: newCard));
+    final GameState newState = this.state.copyWith(card: await generator.getRandomCard())
+    emit(_GameInitial(newState);
   }
 }
