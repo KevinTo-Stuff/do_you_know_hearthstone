@@ -232,7 +232,6 @@ class HearthstoneCardDisplay extends StatelessWidget {
                     ),
                   ),
                 ),
-
             ],
           ),
         ),

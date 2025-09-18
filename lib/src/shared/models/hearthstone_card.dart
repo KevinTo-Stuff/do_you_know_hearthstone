@@ -24,6 +24,7 @@ class HearthstoneCard {
   final CardType? type;
   final Tribe? race;
   final SpellSchool? spellSchool;
+  final String? artUrl;
 
   HearthstoneCard({
     required this.id,
@@ -48,6 +49,7 @@ class HearthstoneCard {
     this.type,
     this.race,
     this.spellSchool,
+    this.artUrl,
   });
 
   factory HearthstoneCard.blank() {
@@ -72,6 +74,7 @@ class HearthstoneCard {
       rarity: null,
       set: null,
       type: null,
+      artUrl: '',
     );
   }
 
@@ -111,6 +114,7 @@ class HearthstoneCard {
       spellSchool: json['spellSchool'] != null
           ? _stringToSpellSchool(json['spellSchool'])
           : null,
+      artUrl: json['artUrl'],
     );
   }
 
@@ -135,6 +139,7 @@ class HearthstoneCard {
       'type': type,
       'race': Tribe,
       'spellSchool': SpellSchool,
+      'artUrl': String,
     };
   }
 

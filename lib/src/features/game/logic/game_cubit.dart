@@ -10,11 +10,9 @@ part 'game_state.dart';
 
 class GameCubit extends Cubit<GameState> {
   final CardGenerator generator = CardGenerator();
+  final HearthstoneCardArtService artService = HearthstoneCardArtService();
 
-  GameCubit()
-    : super(
-        _GameInitial(score: 0, card: HearthstoneCard.blank(), cardArtUrl: ''),
-      ) {
+  GameCubit() : super(_GameInitial(score: 0, card: HearthstoneCard.blank())) {
     _initialize();
   }
 
@@ -23,7 +21,9 @@ class GameCubit extends Cubit<GameState> {
   }
 
   Future<void> generateCard() async {
-    final GameState newState = this.state.copyWith(card: await generator.getRandomCard())
-    emit(_GameInitial(newState);
+    final HearthstoneCard newCard = await generator.getRandomCard();
+
+    final GameState newState = state.copyWith(card: newCard);
+    emit(_GameInitial(score: newState.score, card: newState.card));
   }
 }
